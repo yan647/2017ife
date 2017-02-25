@@ -53,25 +53,43 @@ function getlen(str){//统计输入字符串长度
 	}
 	return strlen;
 }
+String.prototype.getLen=function(){//统计输入字符串长度，使用原型
+	var strlen=0;
+	for(var i=0;i<this.length;i++){
+		if(this.charCodeAt(i)>255){//如果是汉字，则加2
+			strlen+=2;
+		} else strlen++;
+	}
+	return strlen;
+}
 btn1.onclick=function(){//点击验证按钮时
 	name1=document.getElementById("name1");
+	/*console.log(typeof name1.value );*/
+	console.log(name1.value.getLen());
 	notNull=document.getElementById("notNull");
 	errNull=document.getElementById("errNull");
 	errNum=document.getElementById("errNum");
 	right=document.getElementById("right");
 	if(name1.value.length==0){//如果矩形框中什么都没填时
 		notNull.style.cssText="display:none;";
+		errNum.style.cssText="display:none;";
+		right.style.cssText="display:none;";
 		errNull.style.cssText="display:block;color:red;"
 		name1.style.cssText="border:2px solid red;"
 	}
-	else if((getlen(name1.value)>16)||(getlen(name1.value)<4)){//如果矩形框中填入的字符数小于4位，大于16位
+	//else if((getlen(name1.value)>16)||(getlen(name1.value)<4)){//如果矩形框中填入的字符数小于4位，大于16位
+	else if((name1.value.getLen()>16)||(name1.value.getLen()<4)){
 		notNull.style.cssText="display:none;";
 		errNum.style.cssText="display:block;color:red;"
+		right.style.cssText="display:none;";
+		errNull.style.cssText="display:none;";
 		name1.style.cssText="border:2px solid red;"
 	}
 	else {//如果输入的格式正确
 		notNull.style.cssText="display:none;";
+		errNum.style.cssText="display:none;";
 		right.style.cssText="display:block;color:green;"
+		errNull.style.cssText="display:none;";
 		name1.style.cssText="border:2px solid green;"
 	}
 }
