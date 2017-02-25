@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务一：表单（一）单个表单项的检验</title>
+	<style type="text/css">
+		*{
+			font-size:20px;
+			font-family: "微软雅黑";
+		}
+		.name{
+			border-radius: 5px;
+			border: 2px solid #ddd;
+		}
+		#btn1,#btn2,#btn3{
+			background-color: #55b3e7;
+			border-radius: 5px;
+			border: 2px solid #55b3e7;
+		}
+		div{
+			margin:15px auto 5px auto;
+			text-align:center;
+		}
+		p{
+			color:#ddd;
+			font-size: 14px;
+			margin:0;
+		}
+		#errNull,#errNum,#right{
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<label for="name1">名称1&nbsp;</label>
+		<input type="text" name="" id="name1" class="name">&nbsp;
+		<input type="button" name="" value="验证" id="btn1">
+		<p id="notNull">必填，长度为4~16个字符</p>
+		<p id="errNull">姓名不能为空</p>
+		<p id="errNum">字符数必须为4~16位</p>
+		<p id="right">名称格式正确</p>
+	</div>
+	<div>
+		<label for="name2">名称2&nbsp;</label>
+		<input type="text" name="" id="name2" class="name">&nbsp;
+		<input type="button" name="" value="验证" id="btn2">
+	</div>
+	<div>
+		<label for="name3">名称3&nbsp;</label>
+		<input type="text" name="" id="name3" class="name">&nbsp;
+		<input type="button" name="" value="验证" id="btn3">
+	</div>
+	
+</body>
+<script type="text/javascript">
+function getlen(str){//统计输入字符串长度
+//来源：http://www.jb51.net/article/45143.htm
+	var strlen=0;
+	for(var i=0;i<str.length;i++){
+		if(str.charCodeAt(i)>255){//如果是汉字，则加2
+			strlen+=2;
+		} else strlen++;
+	}
+	return strlen;
+}
+btn1.onclick=function(){//点击验证按钮时
+	name1=document.getElementById("name1");
+	notNull=document.getElementById("notNull");
+	errNull=document.getElementById("errNull");
+	errNum=document.getElementById("errNum");
+	right=document.getElementById("right");
+	if(name1.value.length==0){//如果矩形框中什么都没填时
+		notNull.style.cssText="display:none;";
+		errNull.style.cssText="display:block;color:red;"
+		name1.style.cssText="border:2px solid red;"
+	}
+	else if((getlen(name1.value)>16)||(getlen(name1.value)<4)){//如果矩形框中填入的字符数小于4位，大于16位
+		notNull.style.cssText="display:none;";
+		errNum.style.cssText="display:block;color:red;"
+		name1.style.cssText="border:2px solid red;"
+	}
+	else {//如果输入的格式正确
+		notNull.style.cssText="display:none;";
+		right.style.cssText="display:block;color:green;"
+		name1.style.cssText="border:2px solid green;"
+	}
+}
+</script>
+</html>
