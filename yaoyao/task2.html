@@ -8,17 +8,15 @@
 			font-size:20px;
 			font-family: "微软雅黑";
 		}
-		label{
+		.label_{
 			vertical-align:middle;
+			margin-left: 34px;
 		}
 		.name,#psd,#psd2,#email,#email,#tel{
 			border-radius: 5px;
 			border: 2px solid #ddd;
 			margin:5px;
 			vertical-align:middle;
-		}
-		.label_psd2{
-			    margin-left: -35px;
 		}
 		#btn1{
 			background-color: #55b3e7;
@@ -32,7 +30,7 @@
 		p{
 			color:#ddd;
 			font-size: 14px;
-			margin:0;
+			margin: 0 0 0 91px;
 		}
 		#notNull,#errNull,#errNum,#right,
 		#psdNotNull,#psdErrNull,#psdErrLen,#psdRight,
@@ -45,14 +43,14 @@
 </head>
 <body>
 	<div>
-		<label for="name">名称&nbsp;</label>
+		<label for="name" class="label_">名称&nbsp;</label>
 		<input type="text" name="" id="name1" class="name"></br>
 		<p id="notNull">必填，长度为4~16个字符</p>
 		<p id="errNull">姓名不能为空</p>
 		<p id="errNum">字符数必须为4~16位</p>
 		<p id="right">名称格式正确</p>
 
-		<label for="psd">密码&nbsp;</label>
+		<label for="psd" class="label_">密码&nbsp;</label>
 		<input type="password" name="" id="psd"></br>
 		<p id="psdNotNull">必填，长度至少为6个字符，可以是数字、字母</p>
 		<p id="psdErrNull">密码不能为空</p>
@@ -66,14 +64,14 @@
 		<p id="psd2ErrSame">两次密码输入不一致</p>
 		<p id="psd2Right">密码输入一致</p>
 
-		<label for="email">邮箱&nbsp;</label>
+		<label for="email" class="label_">邮箱&nbsp;</label>
 		<input type="email" name="" id="email"></br>
 		<p id="emailNotNull">必填</p>
 		<p id="emailErrNull">邮箱不能为空</p>
 		<p id="emailErr">邮箱格式错误</p>
 		<p id="emailRight">邮箱输入正确</p>
 
-		<label for="tel">手机&nbsp;</label>
+		<label for="tel" class="label_">手机&nbsp;</label>
 		<input type="text" name="" id="tel" ></br>
 		<p id="telNotNull">必填</p>
 		<p id="telErrNull">手机号不能为空</p>
