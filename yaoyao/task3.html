@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务三：表单（三）联动</title>
+	<style type="text/css">
+		label.radio{
+			background-color:#55b3e7;
+		}
+		#stu,#not{
+			display: none;			
+		}	
+		#sx{
+			display:none;
+		}	
+		#Shen{
+			width:55px;
+			float:left;
+		}
+	</style>
+</head>
+<body>	
+	<div id="context">
+		<input type="radio" name="stu" id="student" value="在校生">在校生&nbsp;&nbsp;
+		<input type="radio" name="stu" id="notStudent" value="非在校生">非在校生
+	</div>
+	<div id="stu">
+		<label style="float:left;margin:0 5px;">学校</label>
+		<select id="Shen">
+			<option class="shen">北京</option>
+			<option class="shen">山西</option>
+		</select>
+		<div style="width:100px;float:left;margin:0 5px;">
+			<select id="bj">
+				<option>北京大学</option>
+				<option>清华大学</option>
+			</select>
+			<select id="sx">
+				<option>山西大学</option>
+				<option>太原大学</option>
+			</select>
+		</div>
+	</div>
+	<div id="not">
+		<label>就业单位</label>
+		<input type="text"/>
+	</div>
+</body>
+<script type="text/javascript">
+	var student=document.getElementById("student");
+	var notStudent=document.getElementById("notStudent");
+	var stu=document.getElementById("stu");
+	var not=document.getElementById("not");  
+	var radios=document.getElementsByName("stu");
+	var Shen=document.getElementById("Shen");
+	var shen=document.getElementsByClassName("shen");
+	var bj=document.getElementById("bj");
+	var sx=document.getElementById("sx");
+	//console.log(shen.innerText);
+	student.onclick=function (){	
+		if(radios[0].checked)
+			console.log(radios[0].value); 
+		stu.style.display="block";	
+		not.style.display="none";
+	}
+	notStudent.onclick=function (){	
+		if(radios[1].checked)
+			console.log(radios[1].value);
+		stu.style.display="none";
+		not.style.display="block";
+	}
+	console.log(Shen.selectedIndex);
+	Shen.onchange=function(){ 
+		if(Shen.selectedIndex==0){
+			bj.style.display="block";
+			sx.style.display="none";
+		}
+		if(Shen.selectedIndex==1){
+			bj.style.display="none";
+			sx.style.display="block";
+		}
+	}
+	
+</script>
+</html>
